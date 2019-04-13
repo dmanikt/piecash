@@ -25,25 +25,12 @@ public class DataManager {
     }
 
     public void getGroups() {
-        /*ValueEventListener postListener = new ValueEventListener() {
+        final ArrayList<String> groups = new ArrayList<>();
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                //Log.w();
-            }
-        };*/
-        final ArrayList<Group> groups = new ArrayList<Group>();
-        Query query = mDatabase.orderByChild("").equalTo("Roomate");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    groups.add(snapshot.getValue(Group.class));
-                }
+                //groups = post.title;
             }
 
             @Override
@@ -51,6 +38,5 @@ public class DataManager {
 
             }
         });
-        return;
     }
 }
