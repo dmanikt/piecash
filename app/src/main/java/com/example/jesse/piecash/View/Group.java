@@ -16,10 +16,22 @@ public class Group {
         members.put(person, 0);
     }
 
-    private void rebalance(Person person, int amount){
-        int temp = members.get(person)
-        members.put(person, temp-(amount/(members.size())));
+    public void rebalance(Person person, int amount){
+        int currentDebtOfBuyer = members.get(person);
+        int updatedDebtOfBuyer = currentDebtOfBuyer - amount;
+        double updateAmountOfOthers = (double)amount/(double)(members.size() - 1);
+        members.put(person, updatedDebtOfBuyer);
+        double otherPersonDebt;
 
+        for(Person p: members.keySet()){
+            otherPersonDebt = members.get(p);
+            if(!p.equals(person)){
+                members.put(p, (int)(otherPersonDebt + updateAmountOfOthers));
+            }
+        }
     }
 
+    public int individualDebt(Person person){
+        return members.get(person);
+    }
 }
