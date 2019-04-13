@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "387058169095",
+    "firebase_url": "https://bitcamp-6f574.firebaseio.com",
+    "project_id": "bitcamp-6f574",
+    "storage_bucket": "bitcamp-6f574.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387058169095:android:b331d4367ae2a5a9",
+        "android_client_info": {
+          "package_name": "com.example.jesse.piecash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387058169095-lbkhkd1e0jje8o9cjopvl07sqdohjit5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1IrFc2BRG5g4WCqIApnwbxV-fxCedWoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387058169095-lbkhkd1e0jje8o9cjopvl07sqdohjit5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
