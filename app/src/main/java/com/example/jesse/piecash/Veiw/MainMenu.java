@@ -1,7 +1,9 @@
-package com.example.jesse.piecash;
+package com.example.jesse.piecash.Veiw;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.jesse.piecash.R;
 
 public class MainMenu extends AppCompatActivity {
 
