@@ -29,48 +29,43 @@ public class Group {
     }
 
 
-    public void payOffDebts(Person person, int amount){
-        int debt = this.debt[];
-        if (amount < debt){
-            members.put(person, debt - amount);
+    public void rebalance(Person person){
+        int num = members.get(person);
+        int temp;
+        for(int i=0;i< members.size(); i++ ){
+            if(i != num) {
+                if (debt[num][i] > debt[i][num]) {
+                    temp = debt[i][num];
+                    debt[num][i] -= temp;
+                    debt[i][num] = 0;
+                    debt[num][num] -= temp;
+                } else {
+                    temp = debt[num][i];
+                    debt[i][num] -= temp;
+                    debt[num][i] = 0;
+                    debt[num][num] -= temp;
+                }
+            }
         }
+
     }
 
     /*
-    *Will divide the amount paid by the size of the group minus the person. Continues to subtract that
-    * value from the persons current debt. If their debt is still positve the function returns. If
-    * the persons debt was positive and is now negative will increase the debt of the other people in
-    * the group by the negative amount divided by the size of the group minus 1. If the persons debt
-    * is strictly negative will increse the other peoples debt by the amount split between the other members.
-    *
      */
     public void buyForGroup(Person person, int amount){
-        int currentDebtOfBuyer = members.get(person);
-        int updatedDebtOfBuyer = currentDebtOfBuyer - (int)((double)amount/(double)(members.size()));
-        double updateAmountOfOthers;
-        members.put(person, updatedDebtOfBuyer);
-        double otherPersonDebt;
-
-        if(updatedDebtOfBuyer >= 0){
-            return;
-        }
-        if(updatedDebtOfBuyer < 0){
-            updateAmountOfOthers = (double)Math.abs(updatedDebtOfBuyer)/(double)(members.size());
-            members.put(person, 0);
-        } else {
-            updateAmountOfOthers = (double)amount/(double)(members.size());
-        }
-        //update everyones debt
-        for(Person p: members.keySet()){
-            otherPersonDebt = members.get(p);
-            if(!p.equals(person)){
-                members.put(p, (int)(otherPersonDebt + updateAmountOfOthers));
-            }
-        }
+        int num = members.get(person);
+        int total = amount/members.size();
+       for(int i = 0; i<members.size();i++){
+           if (i != num) {
+               debt[i][i] += total;
+               debt[i][num] += total;
+           }
+       }
     }
 
     public int individualDebt(Person person){
-        return members.get(person);
+        int num = members.get(person);
+        return debt[num][num];
     }
 
     public boolean containsPerson(Person person){

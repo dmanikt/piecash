@@ -35,25 +35,8 @@ public class Person {
 *Buy will allow the person to lower their debt within a group
  */
     public void buy(int amount, Group groupName){
-        /*
-        1) if the person had positive debt, and they pay less than or equal to their debt */
-        if (groupName.individualDebt(this) > 0 && amount <= groupName.individualDebt(this)) {
-            groupName.payOffDebts(this, amount);
-        }
-        /*
-        2) if the person had positive debt, and they pay more than their debt */
-        else if (groupName.individualDebt(this) > 0 && amount > groupName.individualDebt(this)){
-            int debt = groupName.individualDebt(this);
-            groupName.payOffDebts(this, debt); /* zeros out their debt */
-            int temp = amount - debt;
-            groupName.buyForGroup(this, temp); /* sends the rest to split amongst group members */
-        }
-        /*
-        3) if the person has no debt, and they pay any amount */
-        else{
-            groupName.buyForGroup(this, amount);
-        }
-
+       groupName.buyForGroup(this, amount);
+       groupName.rebalance(this);
     }
 
     /*
