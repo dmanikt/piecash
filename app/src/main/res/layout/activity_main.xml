@@ -26,19 +26,55 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:columnCount="1">
+        android:columnCount="2">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text"
-            android:paddingLeft="10dp"
+            android:text="Name"
             android:paddingTop="60dp"
-            android:layout_columnSpan="1" />
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"
+            android:textSize="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item"
+            android:paddingLeft="100dp"
+            android:layout_columnSpan="1"
+            android:layout_gravity="right"
+            android:textSize="30dp"/>
+        <EditText
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:inputType="textShortMessage"
+            android:layout_width="100dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/price"
+            android:layout_columnSpan="1"
+            android:layout_gravity="right"
+            android:textSize="30dp"/>
+        <EditText
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_width="100dp"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/add_payment" android:text="add"
-            android:layout_columnSpan="1"
-            android:layout_gravity="center"/>
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"
+            android:textSize="30dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/summary"
+            android:text="View Summary"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"
+            android:textSize="25dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
