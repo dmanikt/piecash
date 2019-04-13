@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "387058169095-j6hdd343hqsn9h050q2fbk83l4uui4i2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jesse.piecash",
+            "certificate_hash": "7626e45fd9363325d3286074e2e0f7ab63976587"
+          }
+        },
+        {
           "client_id": "387058169095-lbkhkd1e0jje8o9cjopvl07sqdohjit5.apps.googleusercontent.com",
           "client_type": 3
         }

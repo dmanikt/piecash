@@ -17,7 +17,7 @@ public class Group {
     }
 
     private void rebalance(Person person, int amount){
-        int temp = members.get(person)
+        int temp = members.get(person);
         members.put(person, temp-(amount/(members.size())));
 
     }

@@ -24,15 +24,15 @@ public class Person {
     }
 
 
-    public void buy(int amount, Group groupName){
+    /*public void buy(int amount, Group groupName){
         groupName.rebalance(this, amount);
-    }
+    }*/
 
     public boolean inGroup(Group groupName){
         return groups.contains(groupName);
     }
 
-    public void createGroup(Sting name, Person other){
+    public void createGroup(String name, Person other){
         Group newGroup =new Group(name, this);
         groups.add(newGroup);
         newGroup.addMember(other);
@@ -51,7 +51,7 @@ public class Person {
         return this.lastName;
     }
 
-    public int retrieveDept(Group groupName){
-       return groupName.inDividualDebt(this);
-    }
+    /*public int retrieveDept(Group groupName){
+       return groupName.individualDebt(this);
+    }*/
 }
