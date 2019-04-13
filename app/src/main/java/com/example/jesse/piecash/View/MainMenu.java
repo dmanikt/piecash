@@ -22,6 +22,9 @@ public class MainMenu extends AppCompatActivity {
 
         // Menu Initialization
         Menu menu = navigationView.getMenu();
+
+        menu.add("Hello");
     }
+
 
 }
