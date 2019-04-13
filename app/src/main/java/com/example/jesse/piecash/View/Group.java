@@ -27,6 +27,13 @@ public class Group {
         person.addGroup(this);
     }
 
+    public void payOffDebts(Person person, int amount){
+        int debt = members.get(person);
+        if (amount < debt){
+            members.put(person, debt - amount);
+        }
+    }
+
     /*
     *Will divide the amount paid by the size of the group minus the person. Continues to subtract that
     * value from the persons current debt. If their debt is still positve the function returns. If
@@ -35,9 +42,9 @@ public class Group {
     * is strictly negative will increse the other peoples debt by the amount split between the other members.
     *
      */
-    public void rebalance(Person person, int amount){
+    public void buyForGroup(Person person, int amount){
         int currentDebtOfBuyer = members.get(person);
-        int updatedDebtOfBuyer = currentDebtOfBuyer - (int)((double)amount/(double)(members.size() - 1));
+        int updatedDebtOfBuyer = currentDebtOfBuyer - (int)((double)amount/(double)(members.size()));
         double updateAmountOfOthers;
         members.put(person, updatedDebtOfBuyer);
         double otherPersonDebt;
@@ -45,10 +52,11 @@ public class Group {
         if(updatedDebtOfBuyer >= 0){
             return;
         }
-        if(currentDebtOfBuyer > 0 && updatedDebtOfBuyer < 0){
-            updateAmountOfOthers = (double)Math.abs(updatedDebtOfBuyer)/(double)(members.size() - 1);
+        if(updatedDebtOfBuyer < 0){
+            updateAmountOfOthers = (double)Math.abs(updatedDebtOfBuyer)/(double)(members.size());
+            members.put(person, 0);
         } else {
-            updateAmountOfOthers = (double)amount/(double)(members.size() - 1);
+            updateAmountOfOthers = (double)amount/(double)(members.size());
         }
         //update everyones debt
         for(Person p: members.keySet()){
