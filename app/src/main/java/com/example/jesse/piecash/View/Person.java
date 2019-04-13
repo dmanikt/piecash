@@ -63,25 +63,6 @@ public class Person {
         return groups.contains(groupName);
     }
 
-    /*
-    *Creates a new group between the creator and one other person.
-     */
-    public void createGroup(String name, Person other){
-        Group newGroup =new Group(name,this);
-        groups.add(newGroup);
-        newGroup.addMember(other);
-        other.addGroup(newGroup);
-    }
-
-    /*
-    *adds a new person to an existing group. Does nothing if the group does not exist in the current
-    * list of groups.
-     */
-    public void addPersonToExistingGroup(Group group, Person other){
-        if(groups.contains(group)){
-            groups.get(groups.indexOf(group)).addMember(other);
-        }
-    }
 
     /*
     * updates the group list if the current person is within the group

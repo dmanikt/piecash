@@ -1,5 +1,6 @@
 package com.example.jesse.piecash.View;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 /*
 *Group class that represents a few people that are buying things for each other. Can be roommates that
@@ -9,26 +10,27 @@ import java.util.HashMap;
 public class Group {
     private String name;
     private HashMap<Person, Integer> members;
+    private int position = 0;
+    private int[][] debt;
+
+
 
     /*
     *Standard constructor
      */
-    public Group(String name, Person person){
+    public Group(String name, ArrayList<Person> persons){
         this.name = name;
         members = new HashMap<>();
-        members.put(person, 0);
+        for(Person p: persons){
+            members.put(p, position++);
+            p.addGroup(this);
+        }
+        debt = new int[persons.size()][persons.size()];
     }
 
-    /*
-    *Adds a memeber to the current members list, and updates the persons group list
-     */
-    public void addMember(Person person){
-        members.put(person, 0);
-        person.addGroup(this);
-    }
 
     public void payOffDebts(Person person, int amount){
-        int debt = members.get(person);
+        int debt = this.debt[];
         if (amount < debt){
             members.put(person, debt - amount);
         }
