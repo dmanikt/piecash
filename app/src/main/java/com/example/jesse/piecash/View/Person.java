@@ -18,6 +18,7 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
+        this.totalDebt = 0;
         this.bankAccount = bankAccount;
         groups = new ArrayList<>();
 
@@ -32,8 +33,8 @@ public class Person {
         return groups.contains(groupName);
     }
 
-    public void createGroup(Sting name, Person other){
-        Group newGroup =new Group(name, this);
+    public void createGroup(String name, Person other){
+        Group newGroup =new Group(name,this);
         groups.add(newGroup);
         newGroup.addMember(other);
         other.addGroup(newGroup);
@@ -51,7 +52,13 @@ public class Person {
         return this.lastName;
     }
 
-    public int retrieveDept(Group groupName){
-       return groupName.inDividualDebt(this);
+
+    public double getTotalDebt(){
+        for(Group g: this.groups){
+            if(g.individualDebt(this) > 0){
+                totalDebt+= g.individualDebt(this);
+            }
+        }
+        return totalDebt;
     }
 }
