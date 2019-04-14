@@ -31,6 +31,8 @@ import android.widget.TextView;
 import com.example.jesse.piecash.R;
 import com.example.jesse.piecash.firebase.DataManager;
 
+import java.util.ArrayList;
+
 public class Summary extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,7 +40,7 @@ public class Summary extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.summary);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,11 +64,7 @@ public class Summary extends AppCompatActivity
 
         DataManager manager = new DataManager();
 
-        TextView text = (TextView) findViewById(R.id.item);
-        text.setText("Item:");
-
-        text = (TextView) findViewById(R.id.price);
-        text.setText("Price:");
+        ArrayList<Group> groups = new ArrayList<>();
 
         ImageView image = (ImageView) findViewById(R.id.image);
         Bitmap bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.ARGB_8888);
@@ -86,33 +84,24 @@ public class Summary extends AppCompatActivity
         //canvas.drawText("Person A", 400, 200, paint);
         image.setImageBitmap(bitmap);
 
-        Button button = (Button) findViewById(R.id.add_payment);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popup(view);
-            }
-        });
-    }
+        groups.add(new Group("yes", new ArrayList<Person>()));
+        groups.add(new Group("no", new ArrayList<Person>()));
+        groups.add(new Group("no", new ArrayList<Person>()));
 
-    public void popup(View view) {
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup, null);
 
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true;
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        LinearLayout lin = (LinearLayout) findViewById(R.id.key);
+        lin.setPadding(50, 750 - groups.size()*30, 0, 0);
+        TextView text;
+        for (int i = 0; i < groups.size(); i++) {
+            text = new TextView(this);
+            text.setText("yes");
+            text.setGravity(Gravity.LEFT);
+            text.setTextSize(30);
+            lin.addView(text);
+        }
+        //key.setTextColor(Color.parseColor("Blue"));
+        //key.setText("hello");
 
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
     }
 
     @Override
@@ -161,11 +150,11 @@ public class Summary extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } /*else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
