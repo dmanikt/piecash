@@ -4,32 +4,49 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.example.jesse.piecash.View.Group;
 
 import java.util.ArrayList;
 
+import static android.R.layout.simple_list_item_1;
+
 public class CreateGroupActivity extends AppCompatActivity {
 
-    private Button addPersonButton = findViewById(R.id.addPersonButton);
-    private Button doneButton = findViewById(R.id.doneButton);
-    private Button backButton = findViewById(R.id.backButton);
-    EditText groupNameField = (EditText) findViewById(R.id.groupNameField);
-    EditText personName = findViewById(R.id.personName);
-    ArrayList<String> namesList = new ArrayList<String>();
-    ArrayList<Group> groups = new ArrayList<>();
+    private Button addPersonButton;
+    private Button doneButton;
+    private Button backButton;
+    EditText groupNameField;
+    EditText personName;
+    ArrayList<String> namesList;
+    ArrayList<Group> groups;
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
+        addPersonButton = findViewById(R.id.addPersonButton);
+        doneButton = findViewById(R.id.doneButton);
+        backButton = findViewById(R.id.backButton);
+        groupNameField = (EditText) findViewById(R.id.groupNameField);
+        personName = findViewById(R.id.personName);
+        namesList = new ArrayList<String>();
+        groups = new ArrayList<>();
+        listView = findViewById(R.id.listView);
+
+
 
         addPersonButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 if (!personName.getText().toString().equals("") || !personName.getText().toString().equals(null)) {
                     namesList.add(personName.getText().toString());
+                    ArrayAdapter<String> adp = new ArrayAdapter(this, android.R.layout.simple_list_item_1, namesList);
                 }
             }
         });
@@ -47,7 +64,6 @@ public class CreateGroupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity activity = new MainActivity();
-                Group newGroup = new Group()
                 activity.setGroup(groups);
 
                 Intent intent = new Intent(CreateGroupActivity.this, activity.getClass());
