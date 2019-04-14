@@ -29,13 +29,17 @@ public class DataManager {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Post post = dataSnapshot.getValue(Post.class);
-                //groups = post.title;
+                for (DataSnapshot snapshot: dataSnapshot.child("Roommates").child("Dhruv").getChildren()) {
+                    System.out.println("Count " + snapshot.getChildrenCount());
+                    Post post = snapshot.getValue(Post.class);
+                    System.out.println("VALUE: " + post.uid + " " + post.author + " " + post.title + " " + post.body);
+                    //groups = post.title;
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                System.out.println("CANCELED");
             }
         });
     }

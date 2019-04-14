@@ -34,11 +34,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jesse.piecash.View.Group;
+import com.example.jesse.piecash.View.Summary;
 import com.example.jesse.piecash.firebase.DataManager;
+import com.example.jesse.piecash.firebase.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -90,15 +94,29 @@ public class MainActivity extends AppCompatActivity
         canvas.drawArc(0, 0, 1000, 1000, (float) (-0.25*360 + 1), -1, true, paint);
         canvas.drawCircle(500, 500, 100, paint);
         //canvas.drawText("Person A", 400, 200, paint);
-        image.setImageBitmap(bitmap);
+        image.setImageBitmap(bitmap);*/
 
-        Button button = (Button) findViewById(R.id.add_payment);
+        Button add = (Button) findViewById(R.id.add_payment);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DataManager dm = new DataManager();
+                dm.getGroups();
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                mDatabase.child("Roommates").child("Dhruv").child("12634576").setValue(new Post("12634576", "Robert", "Groceries", "$12.78"));
+                mDatabase.child("Roommates").child("Dhruv").child("5786342").setValue(new Post("5786342", "Drew", "Gasoline", "$8.27"));
+
+            }
+        });
+
+        Button button = (Button) findViewById(R.id.summary);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popup(view);
+                startActivity(new Intent(getApplicationContext(),
+                        Summary.class));
             }
-        });*/
+        });
     }
 
     public void setGroup(ArrayList<Group> groups){
