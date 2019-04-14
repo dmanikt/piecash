@@ -22,9 +22,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -90,7 +92,7 @@ public class Summary extends AppCompatActivity
 
 
         LinearLayout lin = (LinearLayout) findViewById(R.id.key);
-        lin.setPadding(50, 750 - groups.size()*30, 0, 0);
+        //lin.setPadding(50, 750 - groups.size()*30, 0, 0);
         TextView text;
         for (int i = 0; i < groups.size(); i++) {
             text = new TextView(this);
@@ -102,8 +104,20 @@ public class Summary extends AppCompatActivity
         //key.setTextColor(Color.parseColor("Blue"));
         //key.setText("hello");
 
-    }
+        ListView list = (ListView) findViewById(R.id.debts);
+        ArrayList<String> arr = new ArrayList<>();
+        ArrayAdapter<String> debts = new ArrayAdapter<>(this,   android.R.layout.simple_list_item_1, arr);
+        list.setAdapter(debts);
+        debts.add("A owes B $15");
+        debts.notifyDataSetChanged();
 
+        ListView week = (ListView) findViewById(R.id.weekly);
+        arr = new ArrayList<>();
+        ArrayAdapter<String> purchases = new ArrayAdapter<>(this,   android.R.layout.simple_list_item_1, arr);
+        week.setAdapter(purchases);
+        purchases.add("Weekly Purchases");
+        purchases.notifyDataSetChanged();
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
