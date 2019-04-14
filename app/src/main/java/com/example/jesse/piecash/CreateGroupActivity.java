@@ -12,16 +12,21 @@ import com.example.jesse.piecash.View.Group;
 import java.util.ArrayList;
 
 public class CreateGroupActivity extends AppCompatActivity {
-
-    private Button addPersonButton = findViewById(R.id.addPersonButton);
-    private Button doneButton = findViewById(R.id.doneButton);
-    private Button backButton = findViewById(R.id.backButton);
-    EditText groupNameField = (EditText) findViewById(R.id.groupNameField);
-    EditText personName = findViewById(R.id.personName);
+    private Button addPersonButton;
+    private Button doneButton;
+    private Button backButton;
+    EditText groupNameField;
+    EditText personName;
     ArrayList<String> namesList = new ArrayList<String>();
     ArrayList<Group> groups = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        addPersonButton = findViewById(R.id.addPersonButton);
+        doneButton = findViewById(R.id.doneButton);
+        backButton = findViewById(R.id.backButton);
+        groupNameField = (EditText) findViewById(R.id.groupNameField);
+        personName = findViewById(R.id.personName);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
 
@@ -47,7 +52,7 @@ public class CreateGroupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity activity = new MainActivity();
-                Group newGroup = new Group()
+               // Group newGroup = new Group();
                 activity.setGroup(groups);
 
                 Intent intent = new Intent(CreateGroupActivity.this, activity.getClass());
