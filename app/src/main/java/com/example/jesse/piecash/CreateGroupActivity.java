@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import static android.R.layout.simple_list_item_1;
 
 public class CreateGroupActivity extends AppCompatActivity {
-
     private Button addPersonButton;
     private Button doneButton;
     private Button backButton;
@@ -25,6 +24,9 @@ public class CreateGroupActivity extends AppCompatActivity {
     ArrayList<String> namesList;
     ArrayList<Group> groups;
     ListView listView;
+    ArrayAdapter <String>
+            adp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +39,15 @@ public class CreateGroupActivity extends AppCompatActivity {
         namesList = new ArrayList<String>();
         groups = new ArrayList<>();
         listView = findViewById(R.id.listView);
-
-
-
+        adp = new ArrayAdapter(CreateGroupActivity.this, android.R.layout.simple_list_item_1, namesList);
+        listView.setAdapter(adp);
         addPersonButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (!personName.getText().toString().equals("") || !personName.getText().toString().equals(null)) {
                     namesList.add(personName.getText().toString());
-                    ArrayAdapter<String> adp = new ArrayAdapter(this, android.R.layout.simple_list_item_1, namesList);
+                    adp.notifyDataSetChanged();
                 }
             }
         });
@@ -66,8 +67,8 @@ public class CreateGroupActivity extends AppCompatActivity {
                 MainActivity activity = new MainActivity();
                 activity.setGroup(groups);
 
-                Intent intent = new Intent(CreateGroupActivity.this, activity.getClass());
-                setIntent(intent);
+                Intent intent = new Intent(CreateGroupActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
