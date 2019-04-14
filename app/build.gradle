@@ -32,6 +32,8 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-database:16.1.0'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation "com.google.android.gms:play-services-gcm:16.1.0"
     //implementation 'com.google.firebase:firebase-admin:6.8.0'
     //implementation 'com.google.firebase:firebase-functions:16.3.0'
 }
