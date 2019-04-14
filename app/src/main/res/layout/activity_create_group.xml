@@ -9,54 +9,101 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="88dp"
+        android:layout_width="84dp"
         android:layout_height="48dp"
+        android:layout_marginEnd="327dp"
+        android:layout_marginRight="327dp"
+        android:layout_marginBottom="683dp"
         android:text="Back"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="227dp"
-        android:layout_height="250dp"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="179dp" />
+        android:layout_width="233dp"
+        android:layout_height="216dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginLeft="89dp"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginBottom="243dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/personName"
         android:layout_width="114dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginLeft="89dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="121dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toStartOf="@+id/addPersonButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupNameField" />
 
     <Button
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Done"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="447dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
+        app:layout_constraintVertical_bias="0.189" />
 
     <Button
         android:id="@+id/addPersonButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="109dp"
+        android:layout_height="50dp"
 
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="202dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginBottom="20dp"
         android:text="Add Person"
-        tools:layout_editor_absoluteX="204dp"
-        tools:layout_editor_absoluteY="121dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/personName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/groupNameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginRight="92dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Group Name"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="62dp" />
+        app:layout_constraintBottom_toTopOf="@+id/personName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
